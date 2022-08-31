@@ -3,6 +3,7 @@ package com.walterkstro.services;
 import com.walterkstro.models.ProductModel;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,13 +26,10 @@ public class ServiceImplement implements ServiceInterface{
     }
 
     @Override
-    public Optional<String> getCookie(HttpServletRequest req) {
-        Cookie[] cookies = req.getCookies() != null ? req.getCookies() : new Cookie[0];
-        Optional<String> cookie = Arrays.stream( cookies )
-                .filter( c -> c.getName().equalsIgnoreCase("username") )
-                .map(c -> c.getValue())
-                .findFirst();
-        return cookie;
+    public Optional<String> getSession(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        String username = (String) session.getAttribute("username");
+        return (username == null) ? Optional.empty() : Optional.of(username);
     }
 
     @Override

@@ -23,7 +23,7 @@
                 <c:when test="${auth}">
                     <div class="d-flex justify-content-between">
                         <p>Hola bienvenido <span class="badge text-bg-primary">${user}</span></p>
-                        <a href="<%= request.getContextPath() %>/logout" class="btn btn-danger">Cerrar sessión</a>
+                        <a href="<%= request.getContextPath() %>/logout" class="btn btn-sm lh-lg btn-danger">Cerrar sessión</a>
                     </div>
                 </c:when>
                 <c:otherwise>

@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface ServiceInterface {
     List<ProductModel> getList();
-    Optional<String> getCookie(HttpServletRequest req);
+    Optional<String> getSession(HttpServletRequest req);
 
     String restoreUsername(String username);
 }
