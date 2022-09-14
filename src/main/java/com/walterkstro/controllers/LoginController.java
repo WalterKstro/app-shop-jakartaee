@@ -1,19 +1,18 @@
 package com.walterkstro.controllers;
 
-import com.walterkstro.services.ServiceImplement;
-import com.walterkstro.services.ServiceInterface;
+import com.walterkstro.services.SessionImplement;
+import com.walterkstro.services.SessionService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet({"/login","/login.html"})
 public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ServiceInterface service = new ServiceImplement();
+        SessionService service = new SessionImplement();
         var session = service.getSession(req);
 
         if( session.isEmpty() ){

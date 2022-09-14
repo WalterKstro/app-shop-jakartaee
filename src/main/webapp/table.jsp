@@ -27,7 +27,7 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <p>Usted no esta <a href="/app-shop/login.html">autenticado</a></p>
+                    <p>Usted no esta <a href="<%= request.getContextPath() %>/login.html">autenticado</a></p>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -44,6 +44,9 @@
                     <c:if test="${auth}">
                         <th scope="col">Price</th>
                     </c:if>
+                    <c:if test="${auth}">
+                        <th scope="col">Comprar</th>
+                    </c:if>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,6 +57,9 @@
                         <td>${product.type}</td>
                         <c:if test="${auth}">
                             <td>${product.price}</td>
+                        </c:if>
+                        <c:if test="${auth}">
+                            <td><a href="<%= request.getContextPath()%>/add?id=${product.id}" class="btn btn-success btn-sm">Add to Cart</a></td>
                         </c:if>
                     </tr>
                 </c:forEach>

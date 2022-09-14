@@ -11,8 +11,8 @@ public class ProductModel {
         this.id = ++ProductModel.counter;
     }
 
-    public ProductModel(String description, float price, String type) {
-        this();
+    public ProductModel(int id,String description, float price, String type) {
+        this.id = id;
         this.description = description;
         this.price = price;
         this.type = type;
