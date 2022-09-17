@@ -1,15 +1,10 @@
 package com.walterkstro.models;
-
-public class ProductModel {
+import static com.walterkstro.models.Currency.formating;
+public class ProductModel{
     private int id;
     private String description;
     private float price;
     private String type;
-    private static int counter = 0;
-
-    public ProductModel() {
-        this.id = ++ProductModel.counter;
-    }
 
     public ProductModel(int id,String description, float price, String type) {
         this.id = id;
@@ -54,5 +49,8 @@ public class ProductModel {
                 ", price=" + price +
                 ", type='" + type + '\'' +
                 '}';
+    }
+    public String formatCurrency() {
+        return formating(this.price);
     }
 }

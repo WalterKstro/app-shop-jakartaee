@@ -56,7 +56,7 @@
                         <td>${product.description}</td>
                         <td>${product.type}</td>
                         <c:if test="${auth}">
-                            <td>${product.price}</td>
+                            <td>${product.formatCurrency()}</td>
                         </c:if>
                         <c:if test="${auth}">
                             <td><a href="<%= request.getContextPath()%>/add?id=${product.id}" class="btn btn-success btn-sm">Add to Cart</a></td>

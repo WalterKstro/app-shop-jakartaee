@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.walterkstro.models.Currency.formating;
+
 public class CartModel {
     private List<ItemModel> list;
     private float total;
@@ -36,5 +38,9 @@ public class CartModel {
         return list.stream()
                 .map( item -> item.subTotal() )
                 .reduce(0f, (prev, current)-> prev + current);
+    }
+
+    public String formatCurrency() {
+        return formating(this.getTotal());
     }
 }

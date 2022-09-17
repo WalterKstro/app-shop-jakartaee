@@ -23,7 +23,7 @@ public class ViewCartController extends HttpServlet {
 
         if( cart.isPresent() ){
             List<ItemModel> list = cart.get().getList();
-            float total = cart.get().getTotal();
+            String total = cart.get().formatCurrency();
             req.setAttribute("cart", list);
             req.setAttribute("isAuth", true);
             req.setAttribute("total", total);

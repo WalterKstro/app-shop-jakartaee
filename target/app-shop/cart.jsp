@@ -17,12 +17,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col col-md-6 offset-md-3">
+        <div class="col col-md-8 offset-md-2">
             <c:choose>
                 <c:when test="${isAuth}">
 
                     <table class="table table-bordered">
-                        <caption class="text-end fs-5 lead">Total:  <strong>${total}</strong></caption>
                         <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -38,17 +37,21 @@
                                 <td>${item.getProduct().id}</td>
                                 <td>${item.getProduct().description}</td>
                                 <td>${item.quantity}</td>
-                                <td>${item.getProduct().price}</td>
-                                <td>${item.subTotal()}</td>
+                                <td>${item.getProduct().formatCurrency()}</td>
+                                <td>${item.formatCurrency()}</td>
                             </tr>
                         </c:forEach>
+                        <tr class="table-dark">
+                            <td>Total</td>
+                            <td colspan="4" class="text-end">${total}</td>
+                        </tr>
                         </tbody>
                     </table>
 
                     <a href="<%=request.getContextPath()%>/products" class="btn btn-success">Continue buy</a>
                 </c:when>
                 <c:otherwise>
-                    <h1>Usted no esta <a href="<%=request.getContextPath()%>/login.html">Autenticado</a></h1>
+                    <h1 class="text-center">Usted no esta <a href="<%=request.getContextPath()%>/login.html">Autenticado</a></h1>
                 </c:otherwise>
             </c:choose>
         </div>

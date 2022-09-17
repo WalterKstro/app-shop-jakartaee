@@ -2,6 +2,8 @@ package com.walterkstro.models;
 
 import java.util.Objects;
 
+import static com.walterkstro.models.Currency.formating;
+
 public class ItemModel {
     private int quantity;
     private ProductModel product;
@@ -44,5 +46,7 @@ public class ItemModel {
         return quantity * product.getPrice();
     }
 
-
+    public String formatCurrency() {
+        return formating(this.subTotal());
+    }
 }
