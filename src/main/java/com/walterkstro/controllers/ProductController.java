@@ -19,10 +19,10 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         SessionService service = new SessionImplement();
         ProductService product = new ProductImplement();
-        boolean auth = service.getSession(req).isPresent();
+        boolean auth = service.isSession(req).isPresent();
 
         if(auth){
-            String user = service.getSession(req).get();
+            String user = service.isSession(req).get();
             req.setAttribute("user", service.restoreUsername(user.toUpperCase()));
         }
         req.setAttribute("products",product.getList());

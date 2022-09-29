@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SessionService {
-    Optional<String> getSession(HttpServletRequest req);
+    Optional<String> isSession(HttpServletRequest req);
 
     String restoreUsername(String username);
     Optional<CartModel> getCart(HttpServletRequest req);

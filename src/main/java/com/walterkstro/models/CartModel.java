@@ -40,6 +40,10 @@ public class CartModel {
                 .reduce(0f, (prev, current)-> prev + current);
     }
 
+    public void setList(List<ItemModel> list) {
+        this.list = list;
+    }
+
     public String formatCurrency() {
         return formating(this.getTotal());
     }

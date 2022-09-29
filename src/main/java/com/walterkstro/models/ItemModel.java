@@ -7,10 +7,22 @@ import static com.walterkstro.models.Currency.formating;
 public class ItemModel {
     private int quantity;
     private ProductModel product;
+    private int id;
+    private static int counter = 0;
 
     public ItemModel(ProductModel product) {
+        this.id = ++ItemModel.counter;
         this.quantity = 1;
         this.product = product;
+    }
+
+    public ItemModel(int quantity, ProductModel product) {
+        this.quantity = quantity;
+        this.product = product;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override

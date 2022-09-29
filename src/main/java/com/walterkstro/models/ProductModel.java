@@ -13,6 +13,11 @@ public class ProductModel{
         this.type = type;
     }
 
+    public ProductModel(int id, String description) {
+        this.id = id;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }

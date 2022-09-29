@@ -13,7 +13,7 @@ public class LogoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         SessionService service = new SessionImplement();
-        boolean auth = service.getSession(req).isPresent();
+        boolean auth = service.isSession(req).isPresent();
 
         if( auth ){
             HttpSession session = req.getSession();
