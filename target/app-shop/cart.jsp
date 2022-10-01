@@ -37,7 +37,6 @@
                                 <tr>
                                     <td>
                                         ${item.getProduct().id}
-                                        <input class="form-control" type="hidden" value="${item.getProduct().id}" name="id_${item.getProduct().id}" readonly>
                                     </td>
                                     <td>${item.getProduct().description}</td>
                                     <td class="w-25">
@@ -46,7 +45,7 @@
                                     <td>${item.getProduct().formatCurrency()}</td>
                                     <td>${item.formatCurrency()}</td>
                                     <td>
-                                        <input class="form-check-input" type="checkbox" value="1" name="delete_${item.getProduct().id}">
+                                        <input class="form-check-input" type="checkbox" value="${item.getProduct().id}" name="delete_${item.getProduct().id}">
                                     </td>
                                 </tr>
                             </c:forEach>

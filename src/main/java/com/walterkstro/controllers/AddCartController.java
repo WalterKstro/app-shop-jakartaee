@@ -18,24 +18,30 @@ import java.util.Optional;
 @WebServlet("/add")
 public class AddCartController extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
-        ProductService productService = new ProductImplement();
-        Optional<ProductModel> isProduct = productService.findById(id);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
+            ServletException, IOException, NumberFormatException {
 
-        if( isProduct.isPresent() ){
-            HttpSession session = req.getSession();
-            ItemModel item = new ItemModel(isProduct.get() );
-            CartModel cart;
+        try{
+            int id = Integer.parseInt(req.getParameter("id"));
+            ProductService productService = new ProductImplement();
+            Optional<ProductModel> isProduct = productService.findById(id);
 
-            if( session.getAttribute("cart") == null ){
-                cart = new CartModel();
-            }else{
-                cart = (CartModel) session.getAttribute("cart");
+            if( isProduct.isPresent() ){
+                HttpSession session = req.getSession();
+                ItemModel item = new ItemModel(isProduct.get() );
+                CartModel cart;
+
+                if( session.getAttribute("cart") == null ){
+                    cart = new CartModel();
+                }else{
+                    cart = (CartModel) session.getAttribute("cart");
+                }
+                cart.addItem(item);
+                session.setAttribute("cart", cart);
             }
-            cart.addItem(item);
-            session.setAttribute("cart", cart);
+            resp.sendRedirect(req.getContextPath()+"/cart");
+        }catch (Exception e) {
+            resp.sendRedirect(req.getContextPath()+"/cart");
         }
-        resp.sendRedirect(req.getContextPath()+"/cart");
     }
 }
