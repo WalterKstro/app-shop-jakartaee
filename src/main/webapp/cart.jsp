@@ -20,7 +20,7 @@
         <div class="col col-md-8 offset-md-2">
             <c:choose>
                 <c:when test="${isAuth}">
-                    <form action="<%=request.getContextPath()%>/update" method="POST" id="form">
+                    <form action="<%=request.getContextPath()%>/cart/update" method="POST" id="form">
                         <table class="table table-bordered">
                             <thead>
                             <tr>

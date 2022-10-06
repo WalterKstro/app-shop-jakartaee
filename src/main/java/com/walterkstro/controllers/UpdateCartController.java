@@ -1,9 +1,6 @@
 package com.walterkstro.controllers;
 
-import com.walterkstro.models.CartModel;
-import com.walterkstro.models.ItemModel;
 import com.walterkstro.services.SessionImplement;
-import com.walterkstro.services.SessionService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,11 +11,11 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@WebServlet("/update")
+@WebServlet("/cart/update")
 public class UpdateCartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/cart").forward(req,resp);
+        getServletContext().getRequestDispatcher("/cart/me").forward(req,resp);
     }
 
     @Override
@@ -54,7 +51,7 @@ public class UpdateCartController extends HttpServlet {
         var sessionUsername = req.getSession();
         sessionUsername.setAttribute("cart", cartSession);
 
-        resp.sendRedirect(req.getContextPath()+"/cart");
+        resp.sendRedirect(req.getContextPath()+"/cart/me");
 
     }
 

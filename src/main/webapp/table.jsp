@@ -45,7 +45,7 @@
                         <th scope="col">Price</th>
                     </c:if>
                     <c:if test="${auth}">
-                        <th scope="col">Comprar</th>
+                        <th scope="col">Buy</th>
                     </c:if>
                 </tr>
                 </thead>
@@ -59,7 +59,7 @@
                             <td>${product.formatCurrency()}</td>
                         </c:if>
                         <c:if test="${auth}">
-                            <td><a href="<%= request.getContextPath()%>/add?id=${product.id}" class="btn btn-success btn-sm">Add to Cart</a></td>
+                            <td><a href="<%= request.getContextPath()%>/cart/add?id=${product.id}" class="btn btn-success btn-sm">Add to Cart</a></td>
                         </c:if>
                     </tr>
                 </c:forEach>

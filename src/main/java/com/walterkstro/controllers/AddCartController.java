@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebServlet("/add")
+@WebServlet("/cart/add")
 public class AddCartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
@@ -29,19 +29,14 @@ public class AddCartController extends HttpServlet {
             if( isProduct.isPresent() ){
                 HttpSession session = req.getSession();
                 ItemModel item = new ItemModel(isProduct.get() );
-                CartModel cart;
+                CartModel cart = (CartModel) session.getAttribute("cart");
 
-                if( session.getAttribute("cart") == null ){
-                    cart = new CartModel();
-                }else{
-                    cart = (CartModel) session.getAttribute("cart");
-                }
                 cart.addItem(item);
                 session.setAttribute("cart", cart);
             }
-            resp.sendRedirect(req.getContextPath()+"/cart");
+            resp.sendRedirect(req.getContextPath()+"/cart/me");
         }catch (Exception e) {
-            resp.sendRedirect(req.getContextPath()+"/cart");
+            resp.sendRedirect(req.getContextPath()+"/cart/me");
         }
     }
 }
