@@ -4,13 +4,23 @@ public class ProductModel{
     private int id;
     private String description;
     private float price;
-    private String type;
+    private CategoryModel category;
 
-    public ProductModel(int id,String description, float price, String type) {
+    public CategoryModel getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryModel category) {
+        this.category = category;
+    }
+
+    public ProductModel() {}
+
+    public ProductModel(int id, String description, float price, CategoryModel category) {
         this.id = id;
         this.description = description;
         this.price = price;
-        this.type = type;
+        this.category = category;
     }
 
     public ProductModel(int id, String description) {
@@ -38,21 +48,13 @@ public class ProductModel{
         this.price = price;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     @Override
     public String toString() {
         return "ProductModel{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
                 ", price=" + price +
-                ", type='" + type + '\'' +
+                ", category='" + category + '\'' +
                 '}';
     }
     public String formatCurrency() {

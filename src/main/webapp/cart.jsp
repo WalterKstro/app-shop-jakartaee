@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col col-md-8 offset-md-2">
+        <div class="col col-md-10 offset-md-1">
             <c:choose>
                 <c:when test="${isAuth}">
                     <form action="<%=request.getContextPath()%>/cart/update" method="POST" id="form">

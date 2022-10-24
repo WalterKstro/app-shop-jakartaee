@@ -22,7 +22,7 @@
             <c:choose>
                 <c:when test="${auth}">
                     <div class="d-flex justify-content-between">
-                        <p>Hola bienvenido <span class="badge text-bg-primary">${user}</span></p>
+                        <p>Hola bienvenido <strong class="badge text-bg-primary">${user}</strong></p>
                         <a href="<%= request.getContextPath() %>/logout" class="btn btn-sm lh-lg btn-danger">Cerrar sessión</a>
                     </div>
                 </c:when>
@@ -43,8 +43,6 @@
                     <th scope="col">Category</th>
                     <c:if test="${auth}">
                         <th scope="col">Price</th>
-                    </c:if>
-                    <c:if test="${auth}">
                         <th scope="col">Buy</th>
                     </c:if>
                 </tr>
@@ -54,7 +52,7 @@
                     <tr>
                         <td>${product.id}</td>
                         <td>${product.description}</td>
-                        <td>${product.type}</td>
+                        <td>${product.category.getName()}</td>
                         <c:if test="${auth}">
                             <td>${product.formatCurrency()}</td>
                         </c:if>

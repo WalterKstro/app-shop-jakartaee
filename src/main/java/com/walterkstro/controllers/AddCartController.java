@@ -1,18 +1,13 @@
 package com.walterkstro.controllers;
 
-import com.walterkstro.models.CartModel;
-import com.walterkstro.models.ItemModel;
-import com.walterkstro.models.ProductModel;
-import com.walterkstro.services.ProductImplement;
-import com.walterkstro.services.ProductService;
+import com.walterkstro.models.*;
+import com.walterkstro.services.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.Optional;
 
 @WebServlet("/cart/add")
@@ -20,10 +15,11 @@ public class AddCartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
             ServletException, IOException, NumberFormatException {
+        Connection requestConnection = (Connection) req.getAttribute("connection");
 
         try{
-            int id = Integer.parseInt(req.getParameter("id"));
-            ProductService productService = new ProductImplement();
+            Integer id = Integer.parseInt(req.getParameter("id"));
+            ProductService productService = new ServiceProductModel( requestConnection );
             Optional<ProductModel> isProduct = productService.findById(id);
 
             if( isProduct.isPresent() ){

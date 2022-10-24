@@ -1,5 +1,6 @@
 package com.walterkstro.filters;
 
+import com.walterkstro.CustomExceptions.ExceptionService;
 import com.walterkstro.database.CreateConnection;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
@@ -25,7 +26,7 @@ public class SetConnection implements Filter {
                 servletRequest.setAttribute("connection",connection);
                 filterChain.doFilter(servletRequest,servletResponse);
                 connection.commit();
-            } catch (SQLException e) {
+            } catch (SQLException | ExceptionService e) {
                 connection.rollback();
                 var resp = (HttpServletResponse) servletResponse;
                 resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());

@@ -11,7 +11,6 @@ public class ProductImplement implements ProductService{
 
     public ProductImplement() {
         this.listado = new ArrayList<>();
-        this.fillList();
     }
     @Override
     public List<ProductModel> getList() {
@@ -19,15 +18,7 @@ public class ProductImplement implements ProductService{
     }
 
     @Override
-    public void fillList() {
-        listado.add(new ProductModel(568,"Smartv Samsung",1750.55f,"Entretenimiento"));
-        listado.add(new ProductModel(985,"IPhone 10X Pro",12750.55f,"Entretenimiento"));
-        listado.add(new ProductModel(156,"Estufa Mabe",1350.55f,"Electrodomestico"));
-        listado.add(new ProductModel(896,"Portatil HP Compaq",7550.55f,"Trabajo"));
-    }
-
-    @Override
-    public Optional<ProductModel> findById(int id) {
+    public Optional<ProductModel> findById(Integer id) {
         return listado.stream()
                 .filter(product -> Integer.valueOf(product.getId()).equals( Integer.valueOf(id) ))
                 .findFirst();
