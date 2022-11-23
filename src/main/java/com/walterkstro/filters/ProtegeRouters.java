@@ -27,6 +27,7 @@ public class ProtegeRouters implements Filter {
         }else {
             HttpServletResponse resp = (HttpServletResponse) servletResponse;
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED,"You aren't authenticated");
+            // req.getRequestDispatcher("/unauthorized.jsp").forward(req,resp);
         }
     }
 }

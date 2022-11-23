@@ -1,4 +1,4 @@
-package com.walterkstro.CustomExceptions;
+package com.walterkstro.exceptions;
 
 public class ExceptionService extends RuntimeException{
     public ExceptionService(String message) {

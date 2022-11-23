@@ -1,6 +1,6 @@
 package com.walterkstro.services;
 
-import com.walterkstro.models.CartModel;
+import com.walterkstro.models.Cart;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -20,9 +20,9 @@ public class SessionImplement implements SessionService {
     }
 
     @Override
-    public Optional<CartModel> getCart(HttpServletRequest req) {
+    public Optional<Cart> getCart(HttpServletRequest req) {
         HttpSession session = req.getSession();
-        CartModel cart = (CartModel) session.getAttribute("cart");
+        Cart cart = (Cart) session.getAttribute("cart");
         return (cart == null || cart.getList().isEmpty()) ? Optional.empty() : Optional.of(cart);
     }
 

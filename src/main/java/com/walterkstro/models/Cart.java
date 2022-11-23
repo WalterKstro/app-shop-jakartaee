@@ -6,15 +6,15 @@ import java.util.stream.Collectors;
 
 import static com.walterkstro.models.Currency.formating;
 
-public class CartModel {
-    private List<ItemModel> list;
+public class Cart {
+    private List<Item> list;
     private float total;
 
-    public CartModel() {
+    public Cart() {
         list = new ArrayList<>();
     }
 
-    public void addItem(ItemModel item){
+    public void addItem(Item item){
         boolean isItem = list.contains( item );
         if( isItem ){
             list = list.stream()
@@ -30,7 +30,7 @@ public class CartModel {
             list.add(item);
         }
     }
-    public List<ItemModel> getList() {
+    public List<Item> getList() {
         return list;
     }
 
@@ -40,7 +40,7 @@ public class CartModel {
                 .reduce(0f, (prev, current)-> prev + current);
     }
 
-    public void setList(List<ItemModel> list) {
+    public void setList(List<Item> list) {
         this.list = list;
     }
 

@@ -1,31 +1,36 @@
 package com.walterkstro.models;
 import static com.walterkstro.models.Currency.formating;
-public class ProductModel{
+public class Product {
     private int id;
     private String description;
     private float price;
-    private CategoryModel category;
+    private Category category;
 
-    public CategoryModel getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(CategoryModel category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
-    public ProductModel() {}
+    public Product() {}
 
-    public ProductModel(int id, String description, float price, CategoryModel category) {
+    public Product(int id, String description, float price, Category category) {
         this.id = id;
         this.description = description;
         this.price = price;
         this.category = category;
     }
 
-    public ProductModel(int id, String description) {
+    public Product(int id) {
         this.id = id;
+    }
+
+    public Product(String description, float price, Category category) {
         this.description = description;
+        this.price = price;
+        this.category = category;
     }
 
     public int getId() {
@@ -34,6 +39,10 @@ public class ProductModel{
 
     public String getDescription() {
         return description;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setDescription(String description) {

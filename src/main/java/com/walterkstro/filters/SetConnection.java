@@ -1,6 +1,6 @@
 package com.walterkstro.filters;
 
-import com.walterkstro.CustomExceptions.ExceptionService;
+import com.walterkstro.exceptions.ExceptionService;
 import com.walterkstro.database.CreateConnection;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;

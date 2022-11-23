@@ -23,7 +23,7 @@
                 <c:when test="${auth}">
                     <div class="d-flex justify-content-between">
                         <p>Hola bienvenido <strong class="badge text-bg-primary">${user}</strong></p>
-                        <a href="<%= request.getContextPath() %>/logout" class="btn btn-sm lh-lg btn-danger">Cerrar sessión</a>
+                        <a href="<%= request.getContextPath() %>/logout" class="btn btn-sm lh-lg btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg></a>
                     </div>
                 </c:when>
                 <c:otherwise>
@@ -35,7 +35,7 @@
 
     <div class="row">
         <div class="col">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -44,6 +44,7 @@
                     <c:if test="${auth}">
                         <th scope="col">Price</th>
                         <th scope="col">Buy</th>
+                        <th scope="col">Edit</th>
                     </c:if>
                 </tr>
                 </thead>
@@ -55,9 +56,8 @@
                         <td>${product.category.getName()}</td>
                         <c:if test="${auth}">
                             <td>${product.formatCurrency()}</td>
-                        </c:if>
-                        <c:if test="${auth}">
-                            <td><a href="<%= request.getContextPath()%>/cart/add?id=${product.id}" class="btn btn-success btn-sm">Add to Cart</a></td>
+                            <td><a href="<%= request.getContextPath()%>/cart/add?id=${product.id}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/><path d="M2.5 2.5h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6l1.6-8.4H7.1"/></svg></a></td>
+                            <td><a href="<%= request.getContextPath()%>/cart/new?id=${product.id}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon><line x1="3" y1="22" x2="21" y2="22"></line></svg></a></td>
                         </c:if>
                     </tr>
                 </c:forEach>

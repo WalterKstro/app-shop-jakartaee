@@ -9,13 +9,13 @@ import java.io.IOException;
 import java.sql.Connection;
 
 @WebServlet("/products")
-public class ProductController extends HttpServlet {
+public class Listar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Connection requestConnection = (Connection) req.getAttribute("connection");
 
         SessionService serviceSession = new SessionImplement();
-        ProductService productService = new ServiceProductModel( requestConnection );
+        Service productService = new ProductService( requestConnection );
         boolean isAuth = serviceSession.isSession(req).isPresent();
 
         if(isAuth){
@@ -23,10 +23,10 @@ public class ProductController extends HttpServlet {
             req.setAttribute("user", serviceSession.restoreUsername(user.toUpperCase()));
         }
 
-        req.setAttribute("products",productService.getList());
+        req.setAttribute("products",productService.get());
         req.setAttribute("auth", isAuth);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/table.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/products.jsp");
         dispatcher.forward(req,resp);
     }
 }

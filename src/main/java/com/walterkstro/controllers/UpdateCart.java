@@ -3,16 +3,14 @@ package com.walterkstro.controllers;
 import com.walterkstro.services.SessionImplement;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @WebServlet("/cart/update")
-public class UpdateCartController extends HttpServlet {
+public class UpdateCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/cart/me").forward(req,resp);
@@ -25,7 +23,7 @@ public class UpdateCartController extends HttpServlet {
         var cartSession = session.getCart(req).get();
         var listItems = cartSession.getList();
 
-        var listOfMaps = getLists(req,names);
+        var listOfMaps = createListForDeleteAndUpdateItems(req,names);
         var itemsForDelete = listOfMaps.get(0);
         var itemsForUpdate = listOfMaps.get(1);
 
@@ -55,7 +53,7 @@ public class UpdateCartController extends HttpServlet {
 
     }
 
-    private List<Map<String,Integer>> getLists(HttpServletRequest req, Enumeration<String> namesParams) {
+    private List<Map<String,Integer>> createListForDeleteAndUpdateItems(HttpServletRequest req, Enumeration<String> namesParams) {
         List<Map<String,Integer>> list = new ArrayList<>();
         Map<String,Integer> deletes = new HashMap<>();
         Map<String,Integer> updates = new HashMap<>();

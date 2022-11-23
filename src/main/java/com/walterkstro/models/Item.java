@@ -4,19 +4,17 @@ import java.util.Objects;
 
 import static com.walterkstro.models.Currency.formating;
 
-public class ItemModel {
+public class Item {
     private int quantity;
-    private ProductModel product;
+    private Product product;
     private int id;
-    private static int counter = 0;
 
-    public ItemModel(ProductModel product) {
-        this.id = ++ItemModel.counter;
+    public Item(Product product) {
         this.quantity = 1;
         this.product = product;
     }
 
-    public ItemModel(int quantity, ProductModel product) {
+    public Item(int quantity, Product product) {
         this.quantity = quantity;
         this.product = product;
     }
@@ -29,7 +27,7 @@ public class ItemModel {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ItemModel itemModel = (ItemModel) o;
+        Item itemModel = (Item) o;
         return Objects.equals(product.getId(), itemModel.getProduct().getId())
                 && Objects.equals(product.getDescription(), itemModel.product.getDescription());
     }
@@ -47,11 +45,11 @@ public class ItemModel {
         this.quantity = quantity;
     }
 
-    public ProductModel getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(ProductModel product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
     public float subTotal(){
