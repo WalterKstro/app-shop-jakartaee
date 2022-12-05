@@ -78,12 +78,14 @@ public class RepositoryProduct implements Repository<Product>{
     }
 
     @Override
-    public void delete(Product product) throws SQLException {
+    public int delete(Product product) throws SQLException {
+        int rows = 0;
         var query = QueriesProduct.DELETE_SIMPLE.getQuery();
         try ( var statement = connection.prepareStatement(query) ){
             statement.setInt(1, product.getId());
-            statement.executeUpdate();
+            rows = statement.executeUpdate();
         }
+        return rows;
     }
 
 }

@@ -40,7 +40,7 @@ public class CategoryService implements Service<Category>{
     }
 
     @Override
-    public void delete(int id) {
-
+    public int delete(int id) {
+        return 0;
     }
 }

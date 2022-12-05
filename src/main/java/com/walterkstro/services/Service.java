@@ -9,5 +9,5 @@ public interface Service<E>{
     Optional<E> findById(Integer id);
 
     void save(E e);
-    void delete(int id);
+    int delete(int id);
 }

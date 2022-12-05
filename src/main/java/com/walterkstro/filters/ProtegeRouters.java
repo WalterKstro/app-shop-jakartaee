@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-@WebFilter({"/cart/*"})
+@WebFilter({"/cart/*","/product/*"})
 public class ProtegeRouters implements Filter {
     @Override
     public void doFilter(

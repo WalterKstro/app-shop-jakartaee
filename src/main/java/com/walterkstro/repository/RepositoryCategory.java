@@ -54,7 +54,7 @@ public class RepositoryCategory implements Repository<Category>{
     }
 
     @Override
-    public void delete(Category category) throws SQLException {
-
+    public int delete(Category category) throws SQLException {
+        return 0;
     }
 }

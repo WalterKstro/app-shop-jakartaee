@@ -44,11 +44,13 @@ public class ProductService implements Service<Product> {
     }
 
     @Override
-    public void delete(int id) {
+    public int delete(int id) {
+        int rows = 0;
         try{
-            repository.delete(new Product(id));
+            rows = repository.delete(new Product(id));
         } catch (SQLException e) {
             throw new ExceptionService(e.getMessage(),e.getCause());
         }
+        return rows;
     }
 }

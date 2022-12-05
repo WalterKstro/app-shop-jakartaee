@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.*;
 
-@WebServlet("/cart/new")
+@WebServlet("/product/new")
 public class Create extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
