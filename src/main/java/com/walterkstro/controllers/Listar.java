@@ -1,5 +1,6 @@
 package com.walterkstro.controllers;
 
+import com.walterkstro.models.User;
 import com.walterkstro.services.*;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,12 +16,12 @@ public class Listar extends HttpServlet {
         Connection requestConnection = (Connection) req.getAttribute("connection");
 
         SessionService serviceSession = new SessionImplement();
-        Service productService = new ProductService( requestConnection );
+        Service productService = new ImplementServiceProduct( requestConnection );
         boolean isAuth = serviceSession.isSession(req).isPresent();
 
         if(isAuth){
-            String user = serviceSession.isSession(req).get();
-            req.setAttribute("user", serviceSession.restoreUsername(user.toUpperCase()));
+            User user = serviceSession.isSession(req).get();
+            req.setAttribute("user",user);
         }
 
         req.setAttribute("products",productService.get());

@@ -7,11 +7,11 @@ import com.walterkstro.repository.*;
 import java.sql.*;
 import java.util.*;
 
-public class CategoryService implements Service<Category>{
+public class ImplementServiceCategory implements Service<Category>{
     private Repository<Category>repository;
 
-    public CategoryService(Connection connection) {
-        repository = new RepositoryCategory(connection);
+    public ImplementServiceCategory(Connection connection) {
+        repository = new ImplementRepositoryCategory(connection);
     }
 
     @Override

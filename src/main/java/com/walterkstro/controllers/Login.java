@@ -1,5 +1,8 @@
 package com.walterkstro.controllers;
 
+import com.walterkstro.models.User;
+import com.walterkstro.services.ImplementServiceUser;
+import com.walterkstro.services.ServiceUser;
 import com.walterkstro.services.SessionImplement;
 import com.walterkstro.services.SessionService;
 import jakarta.servlet.ServletException;
@@ -7,6 +10,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.util.Optional;
 
 @WebServlet({"/login","/login.html"})
 public class Login extends HttpServlet {
@@ -24,16 +29,22 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        var username = req.getParameter("username");
-        var password = req.getParameter("password");
+        Connection requestConnection = (Connection) req.getAttribute("connection");
+        ServiceUser authentication = new ImplementServiceUser(requestConnection);
 
-        if( username.equalsIgnoreCase(username) && password.equalsIgnoreCase(password) ){
+        var email = req.getParameter("email");
+        var password = req.getParameter("password");
+        User userLogin = new User(email,password);
+
+        Optional<User> auth = authentication.authentication(userLogin);
+
+        if( auth.isPresent() ){
             HttpSession session = req.getSession();
-            session.setAttribute("username",username);
+            session.setAttribute("user",auth.get());
 
             resp.sendRedirect(req.getContextPath() + "/products");
         }else{
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            resp.sendRedirect(req.getContextPath() + "/errorAuth.jsp");
         }
     }
 }

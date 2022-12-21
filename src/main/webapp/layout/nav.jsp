@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="${pageContext.request.contextPath}/assets/logo.svg" alt="my brand">
@@ -22,13 +23,16 @@
             Account
           </a>
           <ul class="dropdown-menu">
-            <li class="${not empty sessionScope.username ? 'd-none' : 'd-block'}"><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login</a></li>
+            <li class="${not empty sessionScope.user ? 'd-none' : 'd-block'}"><a class="dropdown-item" href="${pageContext.request.contextPath}/login">Login</a></li>
             <li><a class="dropdown-item" href="${pageContext.request.contextPath}/cart/me">My cart</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
+            <li class="${not empty sessionScope.user ? 'd-block' : 'd-none'}"><a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a></li>
           </ul>
         </li>
       </ul>
+      <span class="${not empty sessionScope.user ? 'd-block' : 'd-none'} navbar-text">
+        ${sessionScope.user.email}
+      </span>
+
     </div>
   </div>
 </nav>

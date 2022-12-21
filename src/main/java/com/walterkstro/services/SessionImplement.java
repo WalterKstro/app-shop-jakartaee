@@ -1,6 +1,7 @@
 package com.walterkstro.services;
 
 import com.walterkstro.models.Cart;
+import com.walterkstro.models.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -8,10 +9,10 @@ import java.util.Optional;
 
 public class SessionImplement implements SessionService {
     @Override
-    public Optional<String> isSession(HttpServletRequest req) {
+    public Optional<User> isSession(HttpServletRequest req) {
         HttpSession session = req.getSession();
-        String username = (String) session.getAttribute("username");
-        return (username == null) ? Optional.empty() : Optional.of(username);
+        User username = (User) session.getAttribute("user");
+        return Optional.ofNullable( username );
     }
 
     @Override

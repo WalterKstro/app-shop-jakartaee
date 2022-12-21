@@ -7,11 +7,11 @@ import com.walterkstro.repository.*;
 import java.sql.*;
 import java.util.*;
 
-public class ProductService implements Service<Product> {
+public class ImplementServiceProduct implements Service<Product> {
     private Repository<Product> repository;
 
-    public ProductService(Connection connection) {
-        repository = new RepositoryProduct(connection);
+    public ImplementServiceProduct(Connection connection) {
+        repository = new ImplementRepositoryProduct(connection);
     }
 
     @Override

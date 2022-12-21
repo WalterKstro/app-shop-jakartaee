@@ -20,7 +20,7 @@ public class AddCart extends HttpServlet {
 
         try{
             Integer id = Integer.parseInt(req.getParameter("id"));
-            Service productService = new ProductService( requestConnection );
+            Service productService = new ImplementServiceProduct( requestConnection );
             Optional<Product> isProduct = productService.findById(id);
 
             if( isProduct.isPresent() ){

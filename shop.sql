@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-12-2022 a las 00:31:14
+-- Tiempo de generación: 21-12-2022 a las 01:23:42
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -69,7 +69,29 @@ INSERT INTO `products` (`prod_id`, `prod_description`, `prod_price`, `categories
 (40, 'Iphone 14 De 6.1 Pulgadas, 128GB poposaurio', 12500, 2),
 (41, 'Lavadora Automatica Con Capacidad De 21 Kilogramos, Color Blanc', 7999, 5),
 (42, 'Cepillo Electrico Revlon One Step Voluminizador Titanio', 449, 7),
-(43, 'Vino Tinto Undurraga Sibaris Merlot Reserva Especial', 145.65, 8);
+(43, 'Vino Tinto Undurraga Sibaris Merlot Reserva Especial', 145.65, 8),
+(44, 'React PRO: Lleva tus bases al siguiente nivel', 12.99, 6);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `user` varchar(24) NOT NULL,
+  `pw` varchar(16) NOT NULL,
+  `email` varchar(24) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `user`, `pw`, `email`) VALUES
+(1, '@walterkstro', '123', 'walterkstro@gmail.com'),
+(2, '@fckastro', '123', 'wfc191@hotmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -90,6 +112,12 @@ ALTER TABLE `products`
   ADD UNIQUE KEY `prod_id_UNIQUE` (`prod_id`);
 
 --
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -103,7 +131,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `prod_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `prod_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

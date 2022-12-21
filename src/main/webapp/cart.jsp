@@ -2,11 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="layout/header.jsp"/>
     <div class="row">
-        <div class="col">
-            <h1 class="text-center">Your cart</h1>
-        </div>
-    </div>
-    <div class="row">
         <div class="col col-md-10 offset-md-1">
             <c:choose>
                 <c:when test="${isAuth}">

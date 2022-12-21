@@ -1,5 +1,6 @@
 package com.walterkstro.filters;
 
+import com.walterkstro.models.User;
 import com.walterkstro.services.SessionImplement;
 import com.walterkstro.services.SessionService;
 import jakarta.servlet.*;
@@ -18,16 +19,18 @@ public class ProtegeRouters implements Filter {
             ServletResponse servletResponse,
             FilterChain filterChain)
             throws IOException, ServletException {
+        servletRequest.setCharacterEncoding("UTF-8");
 
         SessionService session = new SessionImplement();
-        Optional<String> userSession = session.isSession((HttpServletRequest) servletRequest);
+        Optional<User> userSession = session.isSession((HttpServletRequest) servletRequest);
 
         if(userSession.isPresent()){
             filterChain.doFilter(servletRequest,servletResponse);
         }else {
             HttpServletResponse resp = (HttpServletResponse) servletResponse;
-            resp.sendError(HttpServletResponse.SC_UNAUTHORIZED,"You aren't authenticated");
-            // req.getRequestDispatcher("/unauthorized.jsp").forward(req,resp);
+            //resp.sendError(HttpServletResponse.SC_UNAUTHORIZED,"You aren't authenticated");
+            HttpServletRequest req = (HttpServletRequest) servletRequest;
+            req.getRequestDispatcher("/unauthorized.jsp").forward(req,resp);
         }
     }
 }

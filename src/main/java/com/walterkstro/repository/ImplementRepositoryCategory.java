@@ -6,10 +6,10 @@ import com.walterkstro.models.Category;
 import java.sql.*;
 import java.util.*;
 
-public class RepositoryCategory implements Repository<Category>{
+public class ImplementRepositoryCategory implements Repository<Category>{
     private Connection connection;
 
-    public RepositoryCategory(Connection connection) {
+    public ImplementRepositoryCategory(Connection connection) {
         this.connection = connection;
     }
 

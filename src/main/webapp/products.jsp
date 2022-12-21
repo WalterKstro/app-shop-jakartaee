@@ -8,20 +8,6 @@
           <h1 class="text-center">List of products</h1>
         </div>
     </div>
-
-    <div class="row mb-5">
-        <div class="col">
-            <c:choose>
-                <c:when test="${auth}">
-                    <p class="fs-5 text">Hola bienvenido <strong class="badge text-bg-primary">${user}</strong></p>
-                </c:when>
-                <c:otherwise>
-                    <p>Usted no esta <a href="<%= request.getContextPath() %>/login.html">autenticado</a></p>
-                </c:otherwise>
-            </c:choose>
-        </div>
-    </div>
-
     <div class="row">
         <div class="col">
             <table class="table table-bordered table-responsive table-striped">

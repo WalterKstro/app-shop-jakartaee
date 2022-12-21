@@ -6,10 +6,10 @@ import com.walterkstro.models.*;
 import java.sql.*;
 import java.util.*;
 
-public class RepositoryProduct implements Repository<Product>{
+public class ImplementRepositoryProduct implements Repository<Product>{
     private Connection connection;
 
-    public RepositoryProduct(Connection connection) {
+    public ImplementRepositoryProduct(Connection connection) {
         this.connection = connection;
     }
 
