@@ -6,6 +6,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletResponse;
 
+import javax.naming.NamingException;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -33,7 +34,7 @@ public class SetConnection implements Filter {
             }
 
 
-        } catch (SQLException e) {
+        } catch (SQLException | NamingException e) {
             var resp = (HttpServletResponse) servletResponse;
             resp.sendError( HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage() );
         }
