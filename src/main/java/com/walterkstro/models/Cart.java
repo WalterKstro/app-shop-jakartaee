@@ -1,12 +1,18 @@
 package com.walterkstro.models;
 
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.walterkstro.models.Currency.formating;
 
-public class Cart {
+@SessionScoped
+@Named
+public class Cart implements Serializable {
     private List<Item> list;
     private float total;
 

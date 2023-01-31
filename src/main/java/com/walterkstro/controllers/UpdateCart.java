@@ -1,6 +1,8 @@
 package com.walterkstro.controllers;
 
+import com.walterkstro.models.Cart;
 import com.walterkstro.services.SessionImplement;
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -11,6 +13,8 @@ import java.util.stream.Collectors;
 
 @WebServlet("/cart/update")
 public class UpdateCart extends HttpServlet {
+    @Inject
+    private Cart cart;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/cart/me").forward(req,resp);
@@ -19,9 +23,7 @@ public class UpdateCart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         var names = req.getParameterNames();
-        var session = new SessionImplement();
-        var cartSession = session.getCart(req).get();
-        var listItems = cartSession.getList();
+        var listItems = cart.getList();
 
         var listOfMaps = createListForDeleteAndUpdateItems(req,names);
         var itemsForDelete = listOfMaps.get(0);
@@ -45,9 +47,9 @@ public class UpdateCart extends HttpServlet {
                     .collect(Collectors.toList());
         }
 
-        cartSession.setList( listItems );
+        cart.setList( listItems );
         var sessionUsername = req.getSession();
-        sessionUsername.setAttribute("cart", cartSession);
+        sessionUsername.setAttribute("cart", cart);
 
         resp.sendRedirect(req.getContextPath()+"/cart/me");
 

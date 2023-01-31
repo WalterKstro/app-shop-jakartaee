@@ -1,6 +1,5 @@
 package com.walterkstro.listener;
 
-import com.walterkstro.models.Cart;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebListener;
 import jakarta.servlet.http.*;
@@ -35,9 +34,11 @@ public class CreateSession implements
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
+        /*
         Cart cart = new Cart();
         HttpSession session = se.getSession();
         session.setAttribute("cart", cart);
+        */
         context.log("creando session");
     }
 
