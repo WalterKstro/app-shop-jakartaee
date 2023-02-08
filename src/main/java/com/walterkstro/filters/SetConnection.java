@@ -1,24 +1,31 @@
 package com.walterkstro.filters;
 
 import com.walterkstro.exceptions.ExceptionService;
-import com.walterkstro.database.CreateConnection;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletResponse;
 
-import javax.naming.NamingException;
+
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 @WebFilter({"/*"})
 public class SetConnection implements Filter {
+    public SetConnection() {}
+
+    @Inject
+    @Named("conn")
+    private Connection conn;
     @Override
     public void doFilter(
             ServletRequest servletRequest,
             ServletResponse servletResponse,
             FilterChain filterChain) throws IOException, ServletException {
 
-        try( var connection = CreateConnection.getConnection()) {
+        try( Connection connection = this.conn) {
             if( connection.getAutoCommit() ){
                 connection.setAutoCommit(false);
             }
@@ -34,9 +41,9 @@ public class SetConnection implements Filter {
             }
 
 
-        } catch (SQLException | NamingException e) {
+        } catch (SQLException e) {
             var resp = (HttpServletResponse) servletResponse;
-            resp.sendError( HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage() );
+           resp.sendError( HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage() );
         }
     }
 }

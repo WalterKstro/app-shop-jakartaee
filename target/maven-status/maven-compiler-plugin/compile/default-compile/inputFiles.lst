@@ -13,6 +13,7 @@
 /home/walter/Documents/workspace/java/app-shop/src/main/java/com/walterkstro/repository/RepositoryUser.java
 /home/walter/Documents/workspace/java/app-shop/src/main/java/com/walterkstro/models/Product.java
 /home/walter/Documents/workspace/java/app-shop/src/main/java/com/walterkstro/models/Item.java
+/home/walter/Documents/workspace/java/app-shop/src/main/java/com/walterkstro/producers/ProducerConnection.java
 /home/walter/Documents/workspace/java/app-shop/src/main/java/com/walterkstro/database/CreateConnection.java
 /home/walter/Documents/workspace/java/app-shop/src/main/java/com/walterkstro/repository/ImplementRepositoryProduct.java
 /home/walter/Documents/workspace/java/app-shop/src/main/java/com/walterkstro/models/User.java

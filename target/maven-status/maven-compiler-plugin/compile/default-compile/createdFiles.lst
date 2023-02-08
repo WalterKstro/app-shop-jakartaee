@@ -5,6 +5,7 @@ com/walterkstro/repository/ImplementRepositoryUser.class
 com/walterkstro/services/SessionService.class
 com/walterkstro/models/Category.class
 com/walterkstro/services/Service.class
+com/walterkstro/producers/ProducerConnection.class
 com/walterkstro/repository/Repository.class
 com/walterkstro/models/Product.class
 com/walterkstro/filters/SetConnection.class
