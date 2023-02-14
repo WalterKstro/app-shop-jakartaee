@@ -34,11 +34,6 @@ public class CreateSession implements
 
     @Override
     public void sessionCreated(HttpSessionEvent se) {
-        /*
-        Cart cart = new Cart();
-        HttpSession session = se.getSession();
-        session.setAttribute("cart", cart);
-        */
         context.log("creando session");
     }
 

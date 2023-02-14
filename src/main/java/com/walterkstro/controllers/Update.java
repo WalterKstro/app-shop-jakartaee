@@ -12,7 +12,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @WebServlet("/cart/update")
-public class UpdateCart extends HttpServlet {
+public class Update extends HttpServlet {
     @Inject
     private Cart cart;
     @Override

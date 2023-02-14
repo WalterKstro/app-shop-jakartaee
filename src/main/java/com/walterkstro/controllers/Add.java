@@ -14,7 +14,7 @@ import java.util.Optional;
 
 
 @WebServlet("/cart/add")
-public class AddCart extends HttpServlet {
+public class Add extends HttpServlet {
     @Inject
     private Cart cart;
     @Override

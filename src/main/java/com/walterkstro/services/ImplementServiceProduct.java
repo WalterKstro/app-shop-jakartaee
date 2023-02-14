@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.*;
 
 public class ImplementServiceProduct implements Service<Product> {
-    private Repository<Product> repository;
+    private IRepositoryCrud<Product> repository;
 
     public ImplementServiceProduct(Connection connection) {
         repository = new ImplementRepositoryProduct(connection);

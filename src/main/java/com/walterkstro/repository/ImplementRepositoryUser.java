@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class ImplementRepositoryUser implements RepositoryUser{
+public class ImplementRepositoryUser implements IRepositoryUser{
 
     private Connection connection;
 

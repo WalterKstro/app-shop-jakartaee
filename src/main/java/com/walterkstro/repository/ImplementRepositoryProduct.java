@@ -6,7 +6,7 @@ import com.walterkstro.models.*;
 import java.sql.*;
 import java.util.*;
 
-public class ImplementRepositoryProduct implements Repository<Product>{
+public class ImplementRepositoryProduct implements IRepositoryCrud<Product>{
     private Connection connection;
 
     public ImplementRepositoryProduct(Connection connection) {

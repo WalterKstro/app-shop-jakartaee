@@ -2,8 +2,9 @@ package com.walterkstro.services;
 
 import com.walterkstro.exceptions.ExceptionService;
 import com.walterkstro.models.User;
+import com.walterkstro.repository.IRepositoryUser;
 import com.walterkstro.repository.ImplementRepositoryUser;
-import com.walterkstro.repository.RepositoryUser;
+
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class ImplementServiceUser implements ServiceUser{
-    private RepositoryUser repository;
+    private IRepositoryUser repository;
 
     public ImplementServiceUser(Connection connection) {
         repository = new ImplementRepositoryUser(connection);

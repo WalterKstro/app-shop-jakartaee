@@ -6,7 +6,7 @@ import com.walterkstro.models.Category;
 import java.sql.*;
 import java.util.*;
 
-public class ImplementRepositoryCategory implements Repository<Category>{
+public class ImplementRepositoryCategory implements IRepositoryCrud<Category>{
     private Connection connection;
 
     public ImplementRepositoryCategory(Connection connection) {

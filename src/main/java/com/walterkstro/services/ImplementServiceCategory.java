@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.*;
 
 public class ImplementServiceCategory implements Service<Category>{
-    private Repository<Category>repository;
+    private IRepositoryCrud<Category>repository;
 
     public ImplementServiceCategory(Connection connection) {
         repository = new ImplementRepositoryCategory(connection);
