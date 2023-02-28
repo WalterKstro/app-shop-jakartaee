@@ -2,7 +2,7 @@ package com.walterkstro.controllers;
 
 import com.walterkstro.models.Product;
 import com.walterkstro.services.ImplementServiceProduct;
-import com.walterkstro.services.Service;
+import com.walterkstro.services.ServiceCrud;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
@@ -22,7 +22,7 @@ public class Delete extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Service<Product> product = new ImplementServiceProduct(connection);
+        ServiceCrud<Product> product = new ImplementServiceProduct(connection);
 
         int idDelete;
         try{

@@ -20,8 +20,8 @@ public class Create extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Service<Category> category = new ImplementServiceCategory(connection);
-        Service<Product> product = new ImplementServiceProduct(connection);
+        ServiceCrud<Category> category = new ImplementServiceCategory(connection);
+        ServiceCrud<Product> product = new ImplementServiceProduct(connection);
 
         List<Category> categories = category.get();
         Integer idUpdate;
@@ -51,7 +51,7 @@ public class Create extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Service<Product> service = new ImplementServiceProduct( connection );
+        ServiceCrud<Product> service = new ImplementServiceProduct( connection );
         Map<String,String> errors = new HashMap<>();
 
         var description = req.getParameter("description");

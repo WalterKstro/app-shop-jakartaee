@@ -7,7 +7,7 @@ import com.walterkstro.repository.*;
 import java.sql.*;
 import java.util.*;
 
-public class ImplementServiceProduct implements Service<Product> {
+public class ImplementServiceProduct implements ServiceCrud<Product> {
     private IRepositoryCrud<Product> repository;
 
     public ImplementServiceProduct(Connection connection) {

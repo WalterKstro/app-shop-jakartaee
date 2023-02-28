@@ -20,7 +20,7 @@ public class Listar extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         SessionService serviceSession = new SessionImplement();
-        Service productService = new ImplementServiceProduct( requestConnection );
+        ServiceCrud productService = new ImplementServiceProduct( requestConnection );
         boolean isAuth = serviceSession.isSession(req).isPresent();
 
         if(isAuth){

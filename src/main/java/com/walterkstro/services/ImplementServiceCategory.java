@@ -7,7 +7,7 @@ import com.walterkstro.repository.*;
 import java.sql.*;
 import java.util.*;
 
-public class ImplementServiceCategory implements Service<Category>{
+public class ImplementServiceCategory implements ServiceCrud<Category> {
     private IRepositoryCrud<Category>repository;
 
     public ImplementServiceCategory(Connection connection) {

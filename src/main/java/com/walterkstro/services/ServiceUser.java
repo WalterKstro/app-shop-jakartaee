@@ -4,6 +4,6 @@ import com.walterkstro.models.User;
 
 import java.util.Optional;
 
-public interface ServiceUser extends Service<User>{
+public interface ServiceUser extends ServiceCrud<User> {
     Optional<User> authentication(User user);
 }

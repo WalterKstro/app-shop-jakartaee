@@ -28,7 +28,7 @@ public class Add extends HttpServlet {
 
         try{
             Integer id = Integer.parseInt(req.getParameter("id"));
-            Service productService = new ImplementServiceProduct( requestConnection );
+            ServiceCrud productService = new ImplementServiceProduct( requestConnection );
             Optional<Product> isProduct = productService.findById(id);
 
             if( isProduct.isPresent() ){

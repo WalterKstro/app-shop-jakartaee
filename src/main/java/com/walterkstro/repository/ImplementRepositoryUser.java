@@ -2,6 +2,9 @@ package com.walterkstro.repository;
 
 import com.walterkstro.database.QueriesUser;
 import com.walterkstro.models.User;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,13 +12,12 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+@RequestScoped
 public class ImplementRepositoryUser implements IRepositoryUser{
 
+    @Inject
+    @Named("conn")
     private Connection connection;
-
-    public ImplementRepositoryUser(Connection connection) {
-        this.connection = connection;
-    }
 
     @Override
     public List<User> all() throws SQLException {

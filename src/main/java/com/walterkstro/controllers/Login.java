@@ -18,8 +18,8 @@ import java.util.Optional;
 @WebServlet({"/login","/login.html"})
 public class Login extends HttpServlet {
     @Inject
-    @Named("conn")
-    private Connection connection;
+    private ServiceUser authentication;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         SessionService service = new SessionImplement();
@@ -34,8 +34,6 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        ServiceUser authentication = new ImplementServiceUser(connection);
 
         var email = req.getParameter("email");
         var password = req.getParameter("password");

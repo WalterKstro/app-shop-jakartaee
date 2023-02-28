@@ -5,7 +5,6 @@ com/walterkstro/repository/ImplementRepositoryUser.class
 com/walterkstro/services/SessionService.class
 com/walterkstro/models/Category.class
 com/walterkstro/controllers/Update.class
-com/walterkstro/services/Service.class
 com/walterkstro/models/Product.class
 com/walterkstro/filters/SetConnection.class
 com/walterkstro/controllers/Listar.class
@@ -30,6 +29,7 @@ com/walterkstro/database/QueriesUser.class
 com/walterkstro/database/QueriesCategory.class
 com/walterkstro/database/CreateConnection.class
 com/walterkstro/services/ServiceUser.class
+com/walterkstro/services/ServiceCrud.class
 com/walterkstro/controllers/Create.class
 com/walterkstro/services/ImplementServiceCategory.class
 com/walterkstro/repository/ImplementRepositoryCategory.class
