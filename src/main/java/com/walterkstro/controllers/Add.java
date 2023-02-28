@@ -4,6 +4,7 @@ import com.walterkstro.models.*;
 import com.walterkstro.models.Product;
 import com.walterkstro.services.*;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -15,12 +16,15 @@ import java.util.Optional;
 
 @WebServlet("/cart/add")
 public class Add extends HttpServlet {
+
     @Inject
     private Cart cart;
+    @Inject
+    @Named("conn")
+    private Connection requestConnection;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
             ServletException, IOException, NumberFormatException {
-        Connection requestConnection = (Connection) req.getAttribute("connection");
 
         try{
             Integer id = Integer.parseInt(req.getParameter("id"));

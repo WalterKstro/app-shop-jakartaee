@@ -2,6 +2,8 @@ package com.walterkstro.controllers;
 
 import com.walterkstro.models.User;
 import com.walterkstro.services.*;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -11,9 +13,11 @@ import java.sql.Connection;
 
 @WebServlet("/products")
 public class Listar extends HttpServlet {
+    @Inject
+    @Named("conn")
+    private Connection requestConnection;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection requestConnection = (Connection) req.getAttribute("connection");
 
         SessionService serviceSession = new SessionImplement();
         Service productService = new ImplementServiceProduct( requestConnection );

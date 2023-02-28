@@ -31,7 +31,6 @@ public class SetConnection implements Filter {
             }
 
             try{
-                servletRequest.setAttribute("connection",connection);
                 filterChain.doFilter(servletRequest,servletResponse);
                 connection.commit();
             } catch (SQLException | ExceptionService e) {

@@ -5,6 +5,8 @@ import com.walterkstro.services.ImplementServiceUser;
 import com.walterkstro.services.ServiceUser;
 import com.walterkstro.services.SessionImplement;
 import com.walterkstro.services.SessionService;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -15,6 +17,9 @@ import java.util.Optional;
 
 @WebServlet({"/login","/login.html"})
 public class Login extends HttpServlet {
+    @Inject
+    @Named("conn")
+    private Connection connection;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         SessionService service = new SessionImplement();
@@ -29,8 +34,8 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection requestConnection = (Connection) req.getAttribute("connection");
-        ServiceUser authentication = new ImplementServiceUser(requestConnection);
+
+        ServiceUser authentication = new ImplementServiceUser(connection);
 
         var email = req.getParameter("email");
         var password = req.getParameter("password");

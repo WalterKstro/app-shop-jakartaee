@@ -13,7 +13,7 @@ public class CreateConnection {
     @Produces
     @RequestScoped
     @Named("conn")
-    public static Connection getConnection() throws SQLException, NamingException {
+    public Connection getConnection() throws SQLException, NamingException {
         Context initContext = new InitialContext();
         Context envContext  = (Context)initContext.lookup("java:/comp/env");
         DataSource ds = (DataSource)envContext.lookup("jdbc/myDataSource");

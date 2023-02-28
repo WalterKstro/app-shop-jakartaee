@@ -2,6 +2,8 @@ package com.walterkstro.controllers;
 
 import com.walterkstro.models.*;
 import com.walterkstro.services.*;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -12,9 +14,12 @@ import java.util.*;
 
 @WebServlet("/product/new")
 public class Create extends HttpServlet {
+    @Inject
+    @Named("conn")
+    private Connection connection;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection connection = (Connection) req.getAttribute("connection");
+
         Service<Category> category = new ImplementServiceCategory(connection);
         Service<Product> product = new ImplementServiceProduct(connection);
 
@@ -45,8 +50,8 @@ public class Create extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection requestConnection = (Connection) req.getAttribute("connection");
-        Service<Product> service = new ImplementServiceProduct( requestConnection );
+
+        Service<Product> service = new ImplementServiceProduct( connection );
         Map<String,String> errors = new HashMap<>();
 
         var description = req.getParameter("description");

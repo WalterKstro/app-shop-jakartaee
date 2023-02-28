@@ -3,6 +3,8 @@ package com.walterkstro.controllers;
 import com.walterkstro.models.Product;
 import com.walterkstro.services.ImplementServiceProduct;
 import com.walterkstro.services.Service;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,9 +16,12 @@ import java.sql.Connection;
 
 @WebServlet("/product/delete")
 public class Delete extends HttpServlet {
+    @Inject
+    @Named("conn")
+    private Connection connection;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Connection connection = (Connection) req.getAttribute("connection");
+
         Service<Product> product = new ImplementServiceProduct(connection);
 
         int idDelete;
