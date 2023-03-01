@@ -2,8 +2,7 @@ package com.walterkstro.controllers;
 
 import com.walterkstro.models.*;
 import com.walterkstro.services.*;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import jakarta.inject.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -19,11 +18,12 @@ public class Create extends HttpServlet {
     private Connection connection;
     @Inject
     private ServiceCrud<Product> productService;
+    @Inject
+    private ServiceCrud<Category> categoryService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        ServiceCrud<Category> category = new ImplementServiceCategory(connection);
-        List<Category> categories = category.get();
+        List<Category> categories = categoryService.get();
         Integer idUpdate;
 
         try{

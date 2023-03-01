@@ -3,16 +3,16 @@ package com.walterkstro.services;
 import com.walterkstro.exceptions.ExceptionService;
 import com.walterkstro.models.Category;
 import com.walterkstro.repository.*;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 
 import java.sql.*;
 import java.util.*;
 
+@RequestScoped
 public class ImplementServiceCategory implements ServiceCrud<Category> {
+    @Inject
     private IRepositoryCrud<Category>repository;
-
-    public ImplementServiceCategory(Connection connection) {
-        repository = new ImplementRepositoryCategory(connection);
-    }
 
     @Override
     public List<Category> get() {

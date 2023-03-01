@@ -2,16 +2,18 @@ package com.walterkstro.repository;
 
 import com.walterkstro.database.QueriesCategory;
 import com.walterkstro.models.Category;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import java.sql.*;
 import java.util.*;
 
+@RequestScoped
 public class ImplementRepositoryCategory implements IRepositoryCrud<Category>{
+    @Inject
+    @Named("conn")
     private Connection connection;
-
-    public ImplementRepositoryCategory(Connection connection) {
-        this.connection = connection;
-    }
 
     @Override
     public List<Category> all() throws SQLException {
