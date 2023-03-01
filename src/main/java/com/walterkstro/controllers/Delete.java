@@ -17,12 +17,9 @@ import java.sql.Connection;
 @WebServlet("/product/delete")
 public class Delete extends HttpServlet {
     @Inject
-    @Named("conn")
-    private Connection connection;
+    private ServiceCrud<Product> productService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        ServiceCrud<Product> product = new ImplementServiceProduct(connection);
 
         int idDelete;
         try{
@@ -34,7 +31,7 @@ public class Delete extends HttpServlet {
         if( idDelete == 0 ){
             req.getRequestDispatcher("/404.jsp").forward(req,resp);
         }else {
-            int rows = product.delete(idDelete);
+            int rows = productService.delete(idDelete);
             if(rows == 1) {
                 resp.sendRedirect(req.getContextPath()+"/products");
             }else {

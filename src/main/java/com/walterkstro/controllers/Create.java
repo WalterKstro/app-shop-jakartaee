@@ -17,12 +17,12 @@ public class Create extends HttpServlet {
     @Inject
     @Named("conn")
     private Connection connection;
+    @Inject
+    private ServiceCrud<Product> productService;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         ServiceCrud<Category> category = new ImplementServiceCategory(connection);
-        ServiceCrud<Product> product = new ImplementServiceProduct(connection);
-
         List<Category> categories = category.get();
         Integer idUpdate;
 
@@ -36,7 +36,7 @@ public class Create extends HttpServlet {
             req.setAttribute("categories", categories);
             req.getRequestDispatcher("/register.jsp").forward(req,resp);
         }else {
-            Optional<Product> item = product.findById(idUpdate);
+            Optional<Product> item = productService.findById(idUpdate);
              if( item.isPresent()){
                 req.setAttribute("product", item.get());
                 req.setAttribute("categories", categories);
@@ -50,8 +50,6 @@ public class Create extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        ServiceCrud<Product> service = new ImplementServiceProduct( connection );
         Map<String,String> errors = new HashMap<>();
 
         var description = req.getParameter("description");
@@ -85,9 +83,9 @@ public class Create extends HttpServlet {
 
         if( errors.isEmpty() ){
             if (isCreate(idProduct)) {
-                service.save( new Product(description, price, new Category(idCategory)));
+                productService.save( new Product(description, price, new Category(idCategory)));
             } else {
-                service.save( new Product(idProduct, description, price, new Category(idCategory)));
+                productService.save( new Product(idProduct, description, price, new Category(idCategory)));
             }
             resp.sendRedirect(req.getContextPath()+"/products");
         }else {
