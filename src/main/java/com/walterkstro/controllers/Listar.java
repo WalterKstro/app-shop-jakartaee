@@ -1,7 +1,6 @@
 package com.walterkstro.controllers;
 
-import com.walterkstro.models.Product;
-import com.walterkstro.models.User;
+import com.walterkstro.models.*;
 import com.walterkstro.services.*;
 import jakarta.inject.Inject;
 import jakarta.servlet.*;
@@ -14,10 +13,10 @@ import java.io.IOException;
 public class Listar extends HttpServlet {
     @Inject
     private ServiceCrud<Product> productService;
+    @Inject
+    private SessionService serviceSession;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        SessionService serviceSession = new SessionImplement();
         boolean isAuth = serviceSession.isSession(req).isPresent();
 
         if(isAuth){

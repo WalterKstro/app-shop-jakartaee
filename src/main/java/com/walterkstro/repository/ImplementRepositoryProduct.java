@@ -2,13 +2,14 @@ package com.walterkstro.repository;
 
 import com.walterkstro.database.QueriesProduct;
 import com.walterkstro.models.*;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.*;
 
 import java.sql.*;
 import java.util.*;
 
-@RequestScoped
+@ApplicationScoped
 public class ImplementRepositoryProduct implements IRepositoryCrud<Product>{
     @Inject
     @Named("conn")

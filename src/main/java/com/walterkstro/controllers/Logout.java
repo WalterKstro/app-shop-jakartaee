@@ -1,6 +1,7 @@
 package com.walterkstro.controllers;
 
 import com.walterkstro.services.*;
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -9,10 +10,12 @@ import java.io.IOException;
 
 @WebServlet("/logout")
 public class Logout extends HttpServlet {
+    @Inject
+    private SessionService serviceSession;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        SessionService service = new SessionImplement();
-        boolean auth = service.isSession(req).isPresent();
+
+        boolean auth = serviceSession.isSession(req).isPresent();
 
         if( auth ){
             HttpSession session = req.getSession();

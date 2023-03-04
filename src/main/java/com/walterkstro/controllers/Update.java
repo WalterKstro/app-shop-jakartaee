@@ -1,7 +1,6 @@
 package com.walterkstro.controllers;
 
 import com.walterkstro.models.Cart;
-import com.walterkstro.services.SessionImplement;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

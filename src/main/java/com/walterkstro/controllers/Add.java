@@ -3,13 +3,11 @@ package com.walterkstro.controllers;
 import com.walterkstro.models.*;
 import com.walterkstro.services.*;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.Optional;
 
 
@@ -20,6 +18,7 @@ public class Add extends HttpServlet {
     private Cart cart;
     @Inject
     private ServiceCrud<Product> productService;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws
             ServletException, IOException, NumberFormatException {
@@ -29,8 +28,8 @@ public class Add extends HttpServlet {
             Optional<Product> isProduct = productService.findById(id);
 
             if( isProduct.isPresent() ){
-                Item item = new Item(isProduct.get() );
-                cart.addItem(item);
+                Item item = new Item(1,isProduct.get() );
+                cart.addItem( item );
             }
             resp.sendRedirect(req.getContextPath()+"/cart/me");
         }catch (Exception e) {

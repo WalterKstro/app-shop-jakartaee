@@ -2,14 +2,14 @@ package com.walterkstro.repository;
 
 import com.walterkstro.database.QueriesCategory;
 import com.walterkstro.models.Category;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.sql.*;
 import java.util.*;
 
-@RequestScoped
+@ApplicationScoped
 public class ImplementRepositoryCategory implements IRepositoryCrud<Category>{
     @Inject
     @Named("conn")

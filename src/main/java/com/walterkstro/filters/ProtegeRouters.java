@@ -1,18 +1,19 @@
 package com.walterkstro.filters;
 
 import com.walterkstro.models.User;
-import com.walterkstro.services.SessionImplement;
 import com.walterkstro.services.SessionService;
+import jakarta.inject.Inject;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.util.Optional;
 
 @WebFilter({"/cart/*","/product/*"})
 public class ProtegeRouters implements Filter {
+    @Inject
+    private SessionService serviceSession;
     @Override
     public void doFilter(
             ServletRequest servletRequest,
@@ -21,8 +22,7 @@ public class ProtegeRouters implements Filter {
             throws IOException, ServletException {
         servletRequest.setCharacterEncoding("UTF-8");
 
-        SessionService session = new SessionImplement();
-        Optional<User> userSession = session.isSession((HttpServletRequest) servletRequest);
+        Optional<User> userSession = serviceSession.isSession((HttpServletRequest) servletRequest);
 
         if(userSession.isPresent()){
             filterChain.doFilter(servletRequest,servletResponse);

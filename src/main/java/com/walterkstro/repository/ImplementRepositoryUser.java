@@ -2,17 +2,13 @@ package com.walterkstro.repository;
 
 import com.walterkstro.database.QueriesUser;
 import com.walterkstro.models.User;
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.*;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
-import java.util.Optional;
 
-@RequestScoped
+@ApplicationScoped
 public class ImplementRepositoryUser implements IRepositoryUser{
 
     @Inject

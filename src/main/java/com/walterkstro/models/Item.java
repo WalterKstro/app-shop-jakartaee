@@ -4,19 +4,19 @@ import java.util.Objects;
 
 import static com.walterkstro.models.Currency.formating;
 
+
 public class Item {
     private int quantity;
     private Product product;
     private int id;
 
-    public Item(Product product) {
-        this.quantity = 1;
-        this.product = product;
-    }
 
     public Item(int quantity, Product product) {
         this.quantity = quantity;
         this.product = product;
+    }
+
+    public Item() {
     }
 
     public int getId() {

@@ -3,12 +3,10 @@ package com.walterkstro.services;
 import com.walterkstro.exceptions.ExceptionService;
 import com.walterkstro.models.User;
 import com.walterkstro.repository.IRepositoryUser;
-import com.walterkstro.repository.ImplementRepositoryUser;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;

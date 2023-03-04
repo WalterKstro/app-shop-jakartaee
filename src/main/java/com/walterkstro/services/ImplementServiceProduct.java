@@ -3,13 +3,13 @@ package com.walterkstro.services;
 import com.walterkstro.exceptions.ExceptionService;
 import com.walterkstro.models.Product;
 import com.walterkstro.repository.*;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
 import java.sql.*;
 import java.util.*;
 
-@RequestScoped
+@ApplicationScoped
 public class ImplementServiceProduct implements ServiceCrud<Product> {
     @Inject
     private IRepositoryCrud<Product> repository;
