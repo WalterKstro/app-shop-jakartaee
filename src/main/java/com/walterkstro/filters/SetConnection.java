@@ -1,5 +1,6 @@
 package com.walterkstro.filters;
 
+import com.walterkstro.database.ConnectionMySQL;
 import com.walterkstro.exceptions.ExceptionService;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -17,7 +18,7 @@ public class SetConnection implements Filter {
     public SetConnection() {}
 
     @Inject
-    @Named("conn")
+    @ConnectionMySQL
     private Connection conn;
     @Override
     public void doFilter(

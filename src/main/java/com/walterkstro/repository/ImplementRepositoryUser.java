@@ -1,5 +1,6 @@
 package com.walterkstro.repository;
 
+import com.walterkstro.database.ConnectionMySQL;
 import com.walterkstro.database.QueriesUser;
 import com.walterkstro.models.User;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -12,7 +13,7 @@ import java.util.List;
 public class ImplementRepositoryUser implements IRepositoryUser{
 
     @Inject
-    @Named("conn")
+    @ConnectionMySQL
     private Connection connection;
 
     @Override

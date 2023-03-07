@@ -4,7 +4,6 @@ import com.walterkstro.exceptions.ExceptionService;
 import com.walterkstro.models.Category;
 import com.walterkstro.repository.*;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 
 import java.sql.*;

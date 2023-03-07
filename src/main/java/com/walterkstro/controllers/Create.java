@@ -1,5 +1,6 @@
 package com.walterkstro.controllers;
 
+import com.walterkstro.database.ConnectionMySQL;
 import com.walterkstro.models.*;
 import com.walterkstro.services.*;
 import jakarta.inject.*;
@@ -14,7 +15,7 @@ import java.util.*;
 @WebServlet("/product/new")
 public class Create extends HttpServlet {
     @Inject
-    @Named("conn")
+    @ConnectionMySQL
     private Connection connection;
     @Inject
     private ServiceCrud<Product> productService;

@@ -1,8 +1,8 @@
 package com.walterkstro.database;
 
+import jakarta.annotation.Resource;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.inject.Produces;
-import jakarta.inject.Named;
 
 import javax.naming.*;
 import javax.sql.DataSource;
@@ -10,13 +10,13 @@ import java.sql.*;
 
 public class CreateConnection {
 
+    @Resource(name="jdbc/myDataSource")
+    private DataSource ds;
+
     @Produces
     @RequestScoped
-    @Named("conn")
+    @ConnectionMySQL
     public Connection getConnection() throws SQLException, NamingException {
-        Context initContext = new InitialContext();
-        Context envContext  = (Context)initContext.lookup("java:/comp/env");
-        DataSource ds = (DataSource)envContext.lookup("jdbc/myDataSource");
         return ds.getConnection();
     }
 }

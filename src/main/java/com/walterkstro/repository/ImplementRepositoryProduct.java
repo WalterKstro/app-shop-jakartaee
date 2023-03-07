@@ -1,9 +1,9 @@
 package com.walterkstro.repository;
 
+import com.walterkstro.database.ConnectionMySQL;
 import com.walterkstro.database.QueriesProduct;
 import com.walterkstro.models.*;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.*;
 
 import java.sql.*;
@@ -12,7 +12,7 @@ import java.util.*;
 @ApplicationScoped
 public class ImplementRepositoryProduct implements IRepositoryCrud<Product>{
     @Inject
-    @Named("conn")
+    @ConnectionMySQL
     private Connection connection;
 
     @Override
