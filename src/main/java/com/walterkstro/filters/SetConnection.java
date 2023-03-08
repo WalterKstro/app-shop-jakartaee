@@ -3,7 +3,6 @@ package com.walterkstro.filters;
 import com.walterkstro.database.ConnectionMySQL;
 import com.walterkstro.exceptions.ExceptionService;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletResponse;
@@ -26,7 +25,9 @@ public class SetConnection implements Filter {
             ServletResponse servletResponse,
             FilterChain filterChain) throws IOException, ServletException {
 
-        try( Connection connection = this.conn) {
+        try{
+            Connection connection = this.conn;
+
             if( connection.getAutoCommit() ){
                 connection.setAutoCommit(false);
             }
