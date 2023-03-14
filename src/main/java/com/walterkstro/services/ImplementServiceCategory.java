@@ -1,6 +1,7 @@
 package com.walterkstro.services;
 
 import com.walterkstro.exceptions.ExceptionService;
+import com.walterkstro.interceptor.AnotationTransactionInterceptor;
 import com.walterkstro.models.Category;
 import com.walterkstro.repository.*;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -10,6 +11,7 @@ import java.sql.*;
 import java.util.*;
 
 @ApplicationScoped
+@AnotationTransactionInterceptor
 public class ImplementServiceCategory implements ServiceCrud<Category> {
     @Inject
     private IRepositoryCrud<Category>repository;

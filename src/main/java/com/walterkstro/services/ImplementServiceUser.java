@@ -1,6 +1,7 @@
 package com.walterkstro.services;
 
 import com.walterkstro.exceptions.ExceptionService;
+import com.walterkstro.interceptor.AnotationTransactionInterceptor;
 import com.walterkstro.models.User;
 import com.walterkstro.repository.IRepositoryUser;
 import jakarta.enterprise.context.RequestScoped;
@@ -10,8 +11,8 @@ import jakarta.inject.Inject;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
-
 @RequestScoped
+@AnotationTransactionInterceptor
 public class ImplementServiceUser implements ServiceUser{
     @Inject
     private IRepositoryUser repository;

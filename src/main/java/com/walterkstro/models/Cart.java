@@ -1,5 +1,6 @@
 package com.walterkstro.models;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
@@ -16,10 +17,10 @@ public class Cart implements Serializable {
     private List<Item> list;
     private float total;
 
-    public Cart() {
+    @PostConstruct
+    public void Initializer(){
         list = new ArrayList<>();
     }
-
     public void addItem(Item item){
         boolean isItem = list.contains( item );
         if( isItem ){
