@@ -43,8 +43,10 @@
                         </table>
                     </form>
 
-                    <a href="<%=request.getContextPath()%>/products" class="btn btn-success">Continue buying</a>
-                    <button class="btn btn-success" id="submit">Update cart</button>
+                    <div class="d-flex gap-4">
+                        <a href="<%=request.getContextPath()%>/products" class="btn btn-success btn-sm">Continue buying</a>
+                        <button class="btn btn-sm btn-outline-success" id="submit">Update cart</button>
+                    </div>
                 </c:otherwise>
             </c:choose>
         </div>
